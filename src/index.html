@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html ng-app="BoligfApp">
+<head>
+	<title>Boligf - change title how?</title>
+	<base href="/">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<style>.ng-cloak, .ng-translate-cloak, .translate-cloak { display: none; }</style>
+	<link rel="stylesheet" href="/Styles/initializer.css"/>
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-66664017-1', 'auto');
+	ga('send', 'pageview');
+	</script>
+</head>
+<body data-ng-cloak data-translate-cloak class="ng-cloak">
+
+	<div id="header">
+		<header class="row">
+			<a ui-sref="home" class="brand">
+				<img src="/Assets/Images/boligflogoblack.svg" alt="BoligForeninger" class="logo" />
+				<span class="hide-for-small-only">{{ 'Logo_Text' | translate }}</span>
+			</a>
+			<a href="javascript:void(0);" class="selector language">
+				<span>
+					<span class="hide-for-small-only">English</span>
+					<i class="fa fa-language"></i>
+				</span>
+			</a>
+			<boligf-member-login-info></boligf-member-login-info>
+			<a ui-sref="authentication.login" class="selector login" boligf-is-authorized="false">
+				<span>
+					<span>{{ 'Authentication_Login' | translate }}</span>
+					<i class="fa fa-lock"></i>
+				</span>
+			</a>
+		</header>
+	</div>
+	<div id="navigation">
+		<div class="small-menu hide-for-medium-up">
+			<i class="fa fa-bars"></i>{{ 'Navigation_Mobile' | translate }}
+		</div>
+		<nav class="row hide-for-small-down">
+			<ul boligf-is-authorized="false">
+				<li><a ui-sref="association.register">{{ 'Navigation_Register' | translate }}</a></li>
+				<li><a ui-sref="association.registermember">{{ 'Navigation_RegisterMember' | translate }}</a></li>
+			</ul>
+			<ul boligf-is-authorized="true">
+				<li><a ui-sref="home">{{ 'Navigation_Home' | translate }}</a></li>
+				<li><a ui-sref="news">{{ 'Navigation_News' | translate }}</a></li>
+				<li><a ui-sref="documents">{{ 'Navigation_Documents' | translate }}</a></li>
+				<li><a ui-sref="board">{{ 'Navigation_Board' | translate }}</a></li>
+				<li><a ui-sref="residents">{{ 'Navigation_Residents' | translate }}</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="section" ng-class="{loading: isLoading}">
+		<div class="row" ui-view></div>
+	</div>
+	<div id="footer">
+		<footer class="row">
+			<div class="column small-12 medium-6 small-only-text-center">© {{ 'Footer_Company' | translate }}</div>
+			<div class="column small-12 medium-6 small-only-text-center text-right"><a href="tel:{{ 'Footer_Phone' | translate }}">{{ 'Footer_Phone' | translate }}</a> | <a href="mailto:{{ 'Footer_Email' | translate }}">{{ 'Footer_Email' | translate }}</a></div>
+		</footer>
+	</div>
+
+	<script src="/Scripts/dependencies.js"></script>
+
+	<script>
+		var Boligf = Boligf || (Boligf = {});
+		Boligf.Config = {
+			ApiProtocol: 'http://',
+			ApiDomainClean: 'api.boligf.dk',
+			ApiDomain: 'api.boligf.dk/api',
+			ApiAccess: function(hideApi) {
+				return Boligf.Config.ApiProtocol + (hideApi ? Boligf.Config.ApiDomainClean : Boligf.Config.ApiDomain);
+			}
+		};
+	</script>
+	<script src="/Scripts/app.js"></script>
+	<script>
+		app.Run();
+	</script>
+
+</body>
+</html>

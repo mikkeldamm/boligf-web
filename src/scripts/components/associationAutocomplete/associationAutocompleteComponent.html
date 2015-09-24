@@ -1,0 +1,10 @@
+﻿<div class="autocomplete">
+	<input type="text" placeholder="{{autocompleteCtrl.placeholder}}" ng-model="autocompleteCtrl.searchQuery"/>
+	<div class="autocomplete-box">
+		<ul>
+			<li ng-repeat="item in autocompleteCtrl.items" ng-click="autocompleteCtrl.selectItem(item)">
+				{{ item.name }}
+			</li>
+		</ul>
+	</div>
+</div>

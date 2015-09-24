@@ -1,0 +1,25 @@
+﻿{
+  "name": "boligf-web",
+  "version": "1.0.0",
+  "description": "Web app for Boligf",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikkeldamm/boligf-web.git"
+  },
+  "author": "Mikkel",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "*",
+    "express": "*",
+    "gulp": "*",
+    "gulp-minify-css": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "*",
+    "gulp-typescript": "*",
+    "gulp-concat": "*"
+  }
+}

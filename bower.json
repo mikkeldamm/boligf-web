@@ -1,0 +1,26 @@
+{
+  "name": "boligf-web",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mikkeldamm/boligf-web",
+  "authors": [
+    "mikkeldamm <mikkeldamm@hotmail.com>"
+  ],
+  "dependencies": {
+    "foundation": "*",
+    "angular": "*",
+    "angular-resource": "*",
+    "angular-cookies": "*",
+    "angular-ui-router": "*",
+    "angular-translate": "*",
+    "angular-translate-loader-static-files": "*",
+    "angular-translate-handler-log": "*"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

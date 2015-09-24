@@ -1,0 +1,45 @@
+﻿@import '../_settings.scss';
+
+body {
+    
+    font-family: 'Segoe UI', sans-serif;
+    min-width: 320px;
+    background-color: #EEF2F3;
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0 0 1em 0;
+}
+
+a {
+
+    color: $color-dark;
+    text-decoration: none;
+
+    &:hover {
+
+        color: $color-dark;
+        text-decoration: none;
+    }
+}
+
+@include align-classes;
+
+@media #{$large-up} {
+
+	.large-6-end {
+
+		margin-right: 50%;
+	}
+}
