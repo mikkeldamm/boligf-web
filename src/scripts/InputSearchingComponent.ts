@@ -1,4 +1,6 @@
-﻿module Boligf {
+﻿/// <reference path="../../_references.ts"/>
+
+module Boligf {
 	
 	export interface IInputSearchingComponentScope extends ng.IScope {
 		eventStatus: number;

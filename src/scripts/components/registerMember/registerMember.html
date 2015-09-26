@@ -35,12 +35,14 @@
 						<label>{{ 'Association_RegisterMember_AddressAutoComplete' | translate }}:</label>
 					</div>
 					<div class="column small-12 large-9">
+						<!-- This should behave as a select where the user can choose an address from the association -->
 						<boligf-address-autocomplete address-selected="registerMemberCtrl.addressSelected(address)" ng-model="registerMemberCtrl.addressRegistered.addressText" placeholder="{{ 'Association_RegisterMember_AddressAutoComplete_Placeholder' | translate }}"></boligf-address-autocomplete>
 					</div>
 					<div class="column small-12 large-3">
 						<label>{{ 'Association_RegisterMember_StreetAddressAutoComplete' | translate }}:</label>
 					</div>
 					<div class="column small-12 large-9">
+						<!-- This should let the user select an address and send a request to the creator for accepting the address -->
 						<boligf-address-autocomplete address-selected="registerMemberCtrl.addressSelected(address)" ng-model="registerMemberCtrl.addressRegistered.addressText" placeholder="{{ 'Association_RegisterMember_StreetAddressAutoComplete_Placeholder' | translate }}"></boligf-address-autocomplete>
 					</div>
 				</div>
