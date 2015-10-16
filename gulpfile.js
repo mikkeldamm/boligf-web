@@ -70,7 +70,7 @@ gulp.task('copy-views', function() {
 
 gulp.task('copy-assets', function() {
   
-    gulp.src(['./src/assets/**/*.*'], { base: './src' })
+    gulp.src(['./src/assets/**/*'], { base: './src' })
       .pipe(gulp.dest('./public'));
 });
 
