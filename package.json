@@ -1,4 +1,4 @@
-﻿{
+﻿
    "name": "boligf-web",
    "version": "1.0.0",
    "description": "Web app for Boligf",
@@ -25,4 +25,3 @@
      "gulp-Sass": "*",
      "gulp-concat": "*"
    }
-}
