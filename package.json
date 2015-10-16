@@ -8,7 +8,7 @@
     "postinstall": "bower install && gulp"
   },
   "engines": {
-    "node": "^0.10.24"
+    "node": "0.10.18"
   },
   "repository": {
     "type": "git",
