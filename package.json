@@ -7,9 +7,6 @@
 		"start": "node server.js",
 		"postinstall": "bower install && gulp"
 	},
-	"engines": {
-		"node": "0:10:18"
-	},
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/mikkeldamm/boligf-web.git"
@@ -17,7 +14,7 @@
 	"author": "Mikkel",
 	"license": "ISC",
 	"dependencies": {
-		"Bower": "*",
+		"bower": "*",
 		"express": "*",
 		"gulp": "*",
 		"gulp-minify-CSS": "*",
