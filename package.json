@@ -4,6 +4,7 @@
   "description": "Web app for Boligf",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "postinstall": "bower install && gulp"
   },
   "repository": {
