@@ -21,6 +21,7 @@
 		static Base: string = "association";
 		static Register: string = "association.register";
 		static RegisterMember: string = "association.registermember";
+		static AddAddresses: string = "association.addaddresses"
 	}
 
 	export class Errors {

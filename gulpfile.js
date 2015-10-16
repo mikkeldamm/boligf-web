@@ -54,17 +54,29 @@ gulp.task('typescript', function () {
 	return tsResult.js.pipe(gulp.dest('./public/scripts'));
 });
 
-gulp.task('copy-static-files', function() {
+gulp.task('copy', ['copy-index', 'copy-views', 'copy-assets']);
+
+gulp.task('copy-index', function() {
+  
     gulp.src(['./src/index.html', './src/robots.txt'])
       .pipe(gulp.dest('./public'));
-      
-    gulp.src(['./src/assets/**/*.*'], { base: './src' })
-      .pipe(gulp.dest('./public'));
-      
+});
+
+gulp.task('copy-views', function() {
+  
     gulp.src(['./src/scripts/components/**/*.html'], { base: './src/scripts' })
       .pipe(gulp.dest('./public/views'));
 });
 
+gulp.task('copy-assets', function() {
+  
+    gulp.src(['./src/assets/**/*.*'], { base: './src' })
+      .pipe(gulp.dest('./public'));
+});
+
+gulp.task('watch-copy', function () {
+	gulp.watch('./src/**/*.html', ['copy-index', 'copy-views']);
+});
 
 gulp.task('watch-sass', function() {
 	gulp.watch('./src/styles/**/*.scss', [
@@ -74,7 +86,9 @@ gulp.task('watch-sass', function() {
 });
 
 gulp.task('watch-ts', function () {
-	gulp.watch('./src/application/**/*.ts', ['typescript']);
+	gulp.watch('./src/scripts/**/*.ts', ['typescript']);
 });
 
-gulp.task('default', ['sass', 'sass-compressed', 'typescript', 'copy-static-files']);
+gulp.task('watch', ['watch-sass', 'watch-ts', 'watch-copy']);
+
+gulp.task('default', ['sass', 'sass-compressed', 'typescript', 'copy']);

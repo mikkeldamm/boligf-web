@@ -10,3 +10,5 @@
 /// <reference path="angularjs/legacy/angular-scenario-1.2.d.ts" />
 /// <reference path="angular-translate/angular-translate.d.ts" />
 /// <reference path="angular-ui-router/angular-ui-router.d.ts" />
+/// <reference path="googlemaps/google.maps.d.ts" />
+/// <reference path="polygon.d.ts" />

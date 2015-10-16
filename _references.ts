@@ -30,3 +30,6 @@
 /// <reference path="./src/scripts/components/memberLoginInfo/memberLoginInfoComponent.ts" />
 /// <reference path="./src/scripts/components/registerMember/registerMemberController.ts" />
 /// <reference path="./src/scripts/components/user/userStorageService.ts" />
+/// <reference path="./src/scripts/components/associationAddAddresses/associationAddAddressesController.ts" />
+/// <reference path="./src/scripts/components/polygonCreator/polygonCreatorComponent.ts" />
+/// <reference path="./src/scripts/components/polygonCreator/polygonMaker.ts" /> 

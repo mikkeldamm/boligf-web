@@ -72,5 +72,7 @@
   "Tip_Association_Register_Heading": "Register members",
   "Tip_Association_Register_Description": "You can register residents as soon as the association is created. Registration of residents can always be done from the administration and it is simple, easy and fast.",
   "Tip_Authentication_Login_Heading": "Nice header tip",
-  "Tip_Authentication_Login_Description": "This should be a cool description for this tip."
+  "Tip_Authentication_Login_Description": "This should be a cool description for this tip.",
+  "Association_AddAddresses_Header": "Add addresses via the map", 
+  "Association_AddAddresses_Description": "With the map below you can click to draw a selection around the association so we can locate all addresses inside that selection.<br><br>To make a selection on the map just click to add a pointer and when to finish then click the first added pointer."
 }

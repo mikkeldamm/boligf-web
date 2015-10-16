@@ -6,7 +6,12 @@ app.use(express.static('public'));
 
 // index page 
 app.get('/', function(req, res) {
-    res.sendFile('/index.html');
+    
+     var options = {
+        root: __dirname + '/public/'
+    };
+    
+    res.sendFile('index.html', options);
 });
 
 app.listen(process.env.PORT || 8080);

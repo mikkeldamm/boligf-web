@@ -63,12 +63,16 @@
 
     h3 {
 
+        font-weight: bold;
+        margin-bottom: 0.5em;
+
         i {
 
             margin-right: 1em;
             color: #B09A1A;
         }
     }
+    
 
     @include box-map;
     @include box-news;

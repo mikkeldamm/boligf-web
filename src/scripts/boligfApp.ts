@@ -83,7 +83,7 @@ module Boligf {
 			urlRouterProvider.otherwise("/");
 			urlRouterProvider.when("/association/registermember", "/association/registermember/");
 
-			locationProvider.html5Mode(true);
+			locationProvider.html5Mode(false);
 		}
 
 		private setupStates(stateProvider: ng.ui.IStateProvider) {
@@ -138,6 +138,12 @@ module Boligf {
 					templateUrl: "/views/components/registerMember/registerMember.html",
 					controller: "Association_RegisterMemberController",
 					controllerAs: "registerMemberCtrl"
+				})
+				.state(Boligf.States.Association.AddAddresses, {
+					url: '/add-addresses',
+					templateUrl: "/views/components/associationAddAddresses/associationAddAddresses.html",
+					controller: "Association_AddAddressesController",
+					controllerAs: "addAddressesCtrl"
 				})
 				.state(Boligf.States.Errors.E404, {
 					url: '/404',
