@@ -91,4 +91,4 @@ gulp.task('watch-ts', function () {
 
 gulp.task('watch', ['watch-sass', 'watch-ts', 'watch-copy']);
 
-gulp.task('default', ['sass', 'sass-compressed', 'typescript', 'copy']);
+gulp.task('default', ['sass', 'sass-compressed', 'typescript', 'copy', 'dependencies-copy']);
