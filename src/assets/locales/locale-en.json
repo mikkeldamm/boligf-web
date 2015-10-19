@@ -74,5 +74,7 @@
   "Tip_Authentication_Login_Heading": "Nice header tip",
   "Tip_Authentication_Login_Description": "This should be a cool description for this tip.",
   "Association_AddAddresses_Header": "Add addresses via the map",
-  "Association_AddAddresses_Description": "With the map you can click to draw a selection around the association so we quickly can locate all addresses & units for you.<br><br>To make a selection on the map just click to add a pointer and to finish the selection then click the first added pointer."
+  "Association_AddAddresses_Description": "With the map you can click to draw a selection around the association so we quickly can locate all addresses & units for you.<br><br>To make a selection on the map just click to add a pointer and to finish the selection then click the first added pointer. You can make multiple selections also.<br><br>On the next page you will be able to verify & add/remove addresses.",
+  "Association_VerifyAddresses_Header": "Verify or add/remove addresses",
+  "Association_VerifyAddresses_Description": "Before you add all the addresses to your association we advice you to quickly verify that the addresses found is correct. It is of course possible to add and remove addresse later on."
 }

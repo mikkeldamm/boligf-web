@@ -10,6 +10,7 @@
 /// <reference path="./src/scripts/services/bearerToken/bearerTokenStorageService.ts"/>
 /// <reference path="./src/scripts/services/bearerToken/bearerTokenInterceptor.ts"/>
 /// <reference path="./src/scripts/services/restApi/apiService.ts"/>
+/// <reference path="./src/scripts/services/dataPassing/dataPassingService.ts"/>
 
 // OTHER
 /// <reference path="./src/scripts/inputSearchingComponent.ts"/>
@@ -31,5 +32,6 @@
 /// <reference path="./src/scripts/components/registerMember/registerMemberController.ts" />
 /// <reference path="./src/scripts/components/user/userStorageService.ts" />
 /// <reference path="./src/scripts/components/associationAddAddresses/associationAddAddressesController.ts" />
+/// <reference path="./src/scripts/components/associationVerifyAddresses/associationVerifyAddressesController.ts" />
 /// <reference path="./src/scripts/components/polygonCreator/polygonCreatorComponent.ts" />
 /// <reference path="./src/scripts/components/polygonCreator/polygonMaker.ts" /> 

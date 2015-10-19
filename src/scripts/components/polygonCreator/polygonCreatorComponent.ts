@@ -10,6 +10,7 @@ module Boligf {
 		city: string;
 		latitude: number; 
 		longitude: number;
+		fullAddress: string;
 		
 		static mapFromDawaAddress(dawaAddress: DawaAddress): BoligfAddress {
 			
@@ -23,6 +24,7 @@ module Boligf {
 			address.city = dawaAddress.adgangsadresse.postnummer.navn;
 			address.latitude = dawaAddress.adgangsadresse.adgangspunkt.koordinater[0];
 			address.longitude = dawaAddress.adgangsadresse.adgangspunkt.koordinater[1];
+			address.fullAddress = dawaAddress.adressebetegnelse;
 			
 			return address;
 		}

@@ -2,24 +2,25 @@
 	
 	export class AssociationAddAddressesController {
 
-		static $inject = [];
+		static $inject = ['IPassDataService'];
 		
 		selections: Selection[];
 		
-		constructor() {
+		constructor(private dataPassingService: IPassDataService) {
 			
 			this.selections = [];
-		} 
+		}
 		
 		onAddressesFound(selection: Selection): void {
 			
-			console.log(selection);
 			this.selections.push(selection);
+			
+			this.dataPassingService.push("selectionsOfAddresses", this.selections);
 		}
 		
 		onMapCleaned(): void {
 			
-			this.selections = [];
+			this.selections = []; 
 		}
 	}
 

@@ -54,3 +54,46 @@
         width: 100%;
     }
 }
+
+
+.addresses {
+    
+    font-size: 0.9em;
+    
+    .address {
+        
+        border-bottom: 1px solid #E2E2E2;
+        padding-bottom: 0.5em;
+        padding-top: 0.5em;
+        display: flex;
+    
+        &:last-child {
+            
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        &:hover {
+            
+            i {
+                color: #904D4D;
+            }
+        }
+        
+        i {
+            
+            margin-left: auto;
+            align-items: center;
+            display: flex;
+            padding: 0 0 0 1em;
+            color: #D6D8D8;
+            z-index: 10;
+            cursor: pointer;
+            
+            &:hover {
+                
+                color: #F00;
+            }
+        }
+    }
+}

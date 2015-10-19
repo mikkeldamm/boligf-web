@@ -145,6 +145,12 @@ module Boligf {
 					controller: "Association_AddAddressesController",
 					controllerAs: "addAddressesCtrl"
 				})
+				.state(Boligf.States.Association.VerifyAddresses, {
+					url: '/verify-addresses',
+					templateUrl: "/views/components/associationVerifyAddresses/associationVerifyAddresses.html",
+					controller: "Association_VerifyAddressesController",
+					controllerAs: "verifyAddressesCtrl"
+				})
 				.state(Boligf.States.Errors.E404, {
 					url: '/404',
 					template: "<span>404 page</span>"
