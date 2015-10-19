@@ -1,5 +1,5 @@
 ﻿module Boligf {
-
+	
 	export interface IAddressAutocompleteResult {
 		id: string;
 		streetname: string;

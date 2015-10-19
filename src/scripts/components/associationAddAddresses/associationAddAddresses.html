@@ -6,11 +6,11 @@
 				<p translate="Association_AddAddresses_Description" translate-compile></p>
 			</div>
 		</div>
-		<div class="column small-12">
+		<div class="column small-12" ng-show="addAddressesCtrl.selections.length > 0">
 			<div class="box selections-count">
-				<div class="selection-count">
-					<h4>2. selection</h4>
-					<p>234 addresses</p>
+				<div class="selection-count" ng-repeat="selection in addAddressesCtrl.selections">
+					<h4>{{ $index + 1 }}. selection</h4>
+					<p>{{ selection.addresses.length }} addresses</p>
 				</div>
 				<button class="button-action">Add addresses</button>
 			</div>
@@ -19,6 +19,6 @@
 </div>
 <div class="column small-12 medium-7 large-8 large-pull-4">
 	<div class="box">
-		<boligf-polygon-creator></boligf-polygon-creator>
+		<boligf-polygon-creator on-addresses-found="addAddressesCtrl.onAddressesFound(selection)" on-map-cleaned="addAddressesCtrl.onMapCleaned()"></boligf-polygon-creator>
 	</div>
 </div>

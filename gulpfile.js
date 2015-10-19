@@ -74,6 +74,16 @@ gulp.task('copy-assets', function() {
       .pipe(gulp.dest('./public'));
 });
 
+gulp.task('copy-locale', function() {
+  
+    gulp.src(['./src/assets/locales/*'], { base: './src' })
+      .pipe(gulp.dest('./public'));
+});
+
+gulp.task('watch-copy-locale', function () {
+	gulp.watch('./src/assets/locales/*.json', ['copy-locale']);
+});
+
 gulp.task('watch-copy', function () {
 	gulp.watch('./src/**/*.html', ['copy-index', 'copy-views']);
 });
@@ -89,6 +99,6 @@ gulp.task('watch-ts', function () {
 	gulp.watch('./src/scripts/**/*.ts', ['typescript']);
 });
 
-gulp.task('watch', ['watch-sass', 'watch-ts', 'watch-copy']);
+gulp.task('watch', ['watch-sass', 'watch-ts', 'watch-copy', 'watch-copy-locale']);
 
 gulp.task('default', ['sass', 'sass-compressed', 'typescript', 'copy', 'dependencies-copy']);

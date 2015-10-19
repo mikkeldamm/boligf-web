@@ -1,12 +1,46 @@
-.map-area {
-	
-	width: 100%;
-	height: 500px;
+.map-container {
+    
+    width: 100%;
+    height: 500px;
+    position: relative;
+        
+    .map-area {
+        
+        width: 100%;
+        height: 100%;
+    }
+    
+    .map-options {
+        
+        position: absolute;
+        background-color: #903838;
+        padding: 0.8em 1em;
+        border-radius: 2px;
+        z-index: 10;
+        font-size: 0.9em;
+        right: 0.9em;
+        top: 0.9em;
+        color: #fff;
+        cursor: pointer;
+        box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+    }
+    
+    .map-options i {
+        
+        margin-right: 0.6em;
+        vertical-align: middle;
+    }
 }
 
 .selections-count {
     
     .selection-count {
+        
+        margin-top: 1em;
+        
+        &:first-child {
+            margin-top: 0;
+        }
         
         p, h4 {
             
