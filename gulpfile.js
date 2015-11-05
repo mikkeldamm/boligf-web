@@ -54,7 +54,6 @@ gulp.task('typescript', function () {
 	return tsResult.js.pipe(gulp.dest('./public/scripts'));
 });
 
-gulp.task('copy', ['copy-index', 'copy-views', 'copy-assets']);
 
 gulp.task('copy-index', function() {
   
@@ -80,6 +79,7 @@ gulp.task('copy-locale', function() {
       .pipe(gulp.dest('./public'));
 });
 
+
 gulp.task('watch-copy-locale', function () {
 	gulp.watch('./src/assets/locales/*.json', ['copy-locale']);
 });
@@ -98,6 +98,9 @@ gulp.task('watch-sass', function() {
 gulp.task('watch-ts', function () {
 	gulp.watch('./src/scripts/**/*.ts', ['typescript']);
 });
+
+
+gulp.task('copy', ['copy-index', 'copy-views', 'copy-assets', 'copy-locale']);
 
 gulp.task('watch', ['watch-sass', 'watch-ts', 'watch-copy', 'watch-copy-locale']);
 

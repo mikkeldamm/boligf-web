@@ -1,12 +1,16 @@
 ﻿module Boligf {
 	
-	export interface IPassDataService {
+	export interface IPushData {
 		push<T>(key: string, data: T): void;
+	}
+	
+	export interface IPullData {
 		pull<T>(key: string): T;
 		pull<T>(key: string, remove: boolean): T;
 	}
+	
 
-	export class DataPassingService implements IPassDataService {
+	export class DataPassingService implements IPushData, IPullData {
 
 		static $inject = [];
 		

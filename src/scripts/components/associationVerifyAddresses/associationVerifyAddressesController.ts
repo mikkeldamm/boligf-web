@@ -6,7 +6,7 @@
 		
 		selections: Selection[];
 		
-		constructor(private dataPassingService: IPassDataService) {
+		constructor(private dataPassingService: IPullData) {
 			
 			this.selections = dataPassingService.pull<Selection[]>('selectionsOfAddresses', false);
 		}

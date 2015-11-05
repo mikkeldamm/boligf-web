@@ -95,6 +95,7 @@ module Boligf {
 
 	export interface IPolygonCreatorComponent {
 		maker: PolygonMaker;
+		pointerIsCreated: boolean;
 		selections: Selection[];
 		clearMap(): void;
 	}
@@ -103,11 +104,13 @@ module Boligf {
 
 		static $inject = ['$scope', '$http'];
 
+		public pointerIsCreated: boolean;
 		public selections: Selection[];
 		public maker: PolygonMaker;
 
 		constructor(private $scope: IPolygonCreatorComponentScope, private $http: ng.IHttpService) {
 			
+			this.pointerIsCreated = false;
 			this.selections = [];
 			this.maker = new PolygonMaker();
 			
@@ -125,8 +128,16 @@ module Boligf {
 			this.maker.onMapCleaned = () => {
 				
 				this.selections = [];
+				this.pointerIsCreated = false;
 				
 				this.$scope.onMapCleaned();
+			};
+			
+			this.maker.onPointerSet = () => {
+			
+				this.pointerIsCreated = true;
+				
+				this.$scope.$apply();
 			};
 		}
 		
@@ -169,7 +180,7 @@ module Boligf {
 				onMapCleaned: "&"
 			},
 			replace: true,
-			template: '<div class="map-container"><div class="map-options" ng-show="polygonCreatorCtrl.selections.length > 0" ng-click="polygonCreatorCtrl.clearMap()"><i class="fa fa-times"></i>clear all selections</div><div class="map-area"></div></div>',
+			template: '<div class="map-container"><div class="map-options" ng-show="polygonCreatorCtrl.pointerIsCreated" ng-click="polygonCreatorCtrl.clearMap()"><i class="fa fa-times"></i>clear all selections</div><div class="map-area"></div></div>',
 			controller: ['$scope', '$http', Boligf.PolygonCreatorComponent],
 			controllerAs: "polygonCreatorCtrl",
 			link: link

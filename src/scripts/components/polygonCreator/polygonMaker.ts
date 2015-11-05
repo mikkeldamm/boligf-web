@@ -6,6 +6,7 @@ module Boligf {
 		selections: PolygonMakerSelection[];
 		onSelectionCompleted: Function;
 		onMapCleaned: Function;
+		onPointerSet: Function;
 		
 		constructor() {
 			
@@ -44,6 +45,10 @@ module Boligf {
 				var selection = this.findOrCreateSelection();
 				
 				selection.addDot(event.latLng);
+				
+				if (this.onPointerSet) {
+					this.onPointerSet();
+				}
 			});
 		}
 		
