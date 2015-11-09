@@ -2,11 +2,18 @@
 	
 	export class AssociationVerifyAddressesController {
 
-		static $inject = ['IPassDataService'];
+		static $inject = ['$state', 'IRegisterService', 'IPassDataService'];
 		
 		selections: Selection[];
 		
-		constructor(private dataPassingService: IPullData) {
+		constructor(
+			private $state: ng.ui.IStateService,
+			private registerService: IRegisterService,
+			private dataPassingService: IPassData) {
+			
+			if (!this.registerService.isReadyForVerifyAddresses) {
+				this.$state.go(States.Association.Register);	
+			}
 			
 			this.selections = dataPassingService.pull<Selection[]>('selectionsOfAddresses', false);
 		}

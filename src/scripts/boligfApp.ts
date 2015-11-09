@@ -23,7 +23,8 @@ module Boligf {
 				'ui.router',
 				'ngResource',
 				'ngCookies',
-				'pascalprecht.translate'
+				'pascalprecht.translate',
+				'LocalStorageModule'
 			]);
 		}
 

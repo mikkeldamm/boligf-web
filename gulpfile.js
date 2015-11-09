@@ -36,6 +36,7 @@ gulp.task("dependencies-copy", function() {
     "./bower_components/angular-resource/angular-resource.js",
     "./bower_components/angular-cookies/angular-cookies.js",
     "./bower_components/angular-ui-router/release/angular-ui-router.js",
+    "./bower_components/angular-local-storage/dist/angular-local-storage.js",
     "./bower_components/angular-translate/angular-translate.js",
     "./bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js",
     "./bower_components/angular-translate-handler-log/angular-translate-handler-log.js",

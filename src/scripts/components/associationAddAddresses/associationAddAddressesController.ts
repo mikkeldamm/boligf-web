@@ -2,13 +2,26 @@
 	
 	export class AssociationAddAddressesController {
 
-		static $inject = ['IPassDataService'];
+		static $inject = ['$state', 'IRegisterService', 'IPassDataService'];
 		
 		selections: Selection[];
 		
-		constructor(private dataPassingService: IPassDataService) {
+		constructor(
+			private $state: ng.ui.IStateService,
+			private registerService: IRegisterService,
+			private dataPassingService: IPassData) {
+			
+			if (!this.registerService.isReadyForAddAddresses) {
+				this.$state.go(States.Association.Register);	
+			}
 			
 			this.selections = [];
+			
+			var savedSelections = this.dataPassingService.pull<Selection[]>("selectionsOfAddresses");
+			if (savedSelections) {
+				
+				this.selections = savedSelections;
+			}
 		}
 		
 		onAddressesFound(selection: Selection): void {

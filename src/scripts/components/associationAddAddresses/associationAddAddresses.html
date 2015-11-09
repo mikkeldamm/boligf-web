@@ -19,6 +19,11 @@
 </div>
 <div class="column small-12 medium-7 large-8 large-pull-4">
 	<div class="box">
-		<boligf-polygon-creator on-addresses-found="addAddressesCtrl.onAddressesFound(selection)" on-map-cleaned="addAddressesCtrl.onMapCleaned()"></boligf-polygon-creator>
+		<boligf-polygon-creator 
+			center-lat="55.6903984669864" 
+			center-lng="12.5304629780526" 
+			selections="addAddressesCtrl.selections" 
+			on-addresses-found="addAddressesCtrl.onAddressesFound(selection)" 
+			on-map-cleaned="addAddressesCtrl.onMapCleaned()"></boligf-polygon-creator>
 	</div>
 </div>

@@ -6,14 +6,15 @@
     "mikkeldamm <mikkeldamm@hotmail.com>"
   ],
   "dependencies": {
-    "foundation": "*",
     "angular": "*",
-    "angular-resource": "*",
     "angular-cookies": "*",
-    "angular-ui-router": "*",
+    "angular-local-storage": "~0.2.3",
+    "angular-resource": "*",
     "angular-translate": "*",
+    "angular-translate-handler-log": "*",
     "angular-translate-loader-static-files": "*",
-    "angular-translate-handler-log": "*"
+    "angular-ui-router": "*",
+    "foundation": "*"
   },
   "license": "MIT",
   "ignore": [

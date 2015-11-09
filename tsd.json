@@ -6,7 +6,7 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "jquery/jquery.d.ts": {
-      "commit": "32029fcb4e1a3ef8968711b545d77b584435729d"
+      "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
     },
     "angularjs/angular-animate.d.ts": {
       "commit": "32029fcb4e1a3ef8968711b545d77b584435729d"
@@ -15,7 +15,7 @@
       "commit": "32029fcb4e1a3ef8968711b545d77b584435729d"
     },
     "angularjs/angular.d.ts": {
-      "commit": "32029fcb4e1a3ef8968711b545d77b584435729d"
+      "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
     },
     "angularjs/angular-mocks.d.ts": {
       "commit": "32029fcb4e1a3ef8968711b545d77b584435729d"
@@ -40,6 +40,9 @@
     },
     "googlemaps/google.maps.d.ts": {
       "commit": "381479952e9725f6e14e7974f082b5e11585bf0b"
+    },
+    "angular-local-storage/angular-local-storage.d.ts": {
+      "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
     }
   }
 }

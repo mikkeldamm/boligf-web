@@ -1,37 +1,36 @@
 ﻿module Boligf {
 	
-	export interface IPushData {
+	export interface IPassData {
 		push<T>(key: string, data: T): void;
-	}
-	
-	export interface IPullData {
 		pull<T>(key: string): T;
 		pull<T>(key: string, remove: boolean): T;
 	}
 	
 
-	export class DataPassingService implements IPushData, IPullData {
+	export class DataPassingService implements IPassData {
 
-		static $inject = [];
+		static $inject = ['localStorageService'];
 		
 		private dataCollection = {};
 
-		constructor() {
+		constructor(private localStorageService: ng.local.storage.ILocalStorageService) {
 			
 		}
 
 		push<T>(key: string, data: T): void {
+			
+			this.localStorageService.set("boligf_" + key, data);
 			
 			this.dataCollection[key] = data;
 		}
 		
 		pull<T>(key: string, remove: boolean = true): T {
 			
-			var data = this.dataCollection[key];
+			var data = this.localStorageService.get<T>("boligf_" + key);
 			
 			if (remove) 
 			{
-				delete this.dataCollection[key];
+				this.localStorageService.remove("boligf_" + key)
 			}
 			
 			return <T>data;

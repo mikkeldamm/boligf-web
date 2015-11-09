@@ -89,6 +89,9 @@ module Boligf {
 	} 
 
 	export interface IPolygonCreatorComponentScope extends ng.IScope {
+		selections: Selection[];
+		centerLat: number;
+		centerLng: number;
 		onAddressesFound: (callbackData: {selection: Selection}) => void;
 		onMapCleaned: () => void;
 	}
@@ -170,12 +173,15 @@ module Boligf {
 		
 		function link(scope: IPolygonCreatorComponentScope, element: JQuery, attributes: ng.IAttributes, controller: IPolygonCreatorComponent): void {
 
-			controller.maker.createMap(element.find('.map-area'), 55.6903984669864, 12.5304629780526);
+			controller.maker.createMap(element.find('.map-area'), scope.centerLat, scope.centerLng);
 		}
 		
 		var directive =  {
 			restrict: 'E',
 			scope: {
+				selections: "=",
+				centerLat: "@",
+				centerLng: "@",
 				onAddressesFound: "&",
 				onMapCleaned: "&"
 			},
