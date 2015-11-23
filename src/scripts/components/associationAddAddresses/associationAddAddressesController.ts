@@ -2,18 +2,25 @@
 	
 	export class AssociationAddAddressesController {
 
-		static $inject = ['$state', 'IRegisterService', 'IPassDataService'];
+		static $inject = ['$state', '$stateParams', 'IRegisterService', 'IPassDataService'];
 		
+		centerLat: number;
+		centerLng: number;
 		selections: Selection[];
 		
 		constructor(
 			private $state: angular.ui.IStateService,
+			private $stateParams: angular.ui.IStateParamsService,
 			private registerService: IRegisterService,
 			private dataPassingService: IPassData) {
 			
 			if (!this.registerService.isReadyForAddAddresses) {
 				this.$state.go(States.Association.Register);	
 			}
+			
+			// TODO: If lat and lng is zero (0) then get pos from GEO
+			this.centerLat = this.$stateParams["lat"];
+			this.centerLng = this.$stateParams["lng"];
 			
 			this.selections = [];
 			

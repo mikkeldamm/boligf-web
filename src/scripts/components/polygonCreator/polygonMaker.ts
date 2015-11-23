@@ -23,7 +23,7 @@ module Boligf {
 			);
 			
 			var myOptions = {
-				zoom: 17,
+				zoom: 16,
 				center: centerOfMap,
 				mapTypeId: google.maps.MapTypeId.ROADMAP
 			}

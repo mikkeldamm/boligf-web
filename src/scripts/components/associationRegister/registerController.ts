@@ -30,8 +30,8 @@
 			
 			this.registerService
 				.registerUserWithAddress(this.user, this.association)
-				.then(() => {
-					this.$state.go(Boligf.States.Association.AddAddresses);
+				.then((centerCordinates) => {
+					this.$state.go(Boligf.States.Association.AddAddresses, { lat: centerCordinates[0], lng: centerCordinates[1] });
 				})
 				.catch(() => {
 					this.$state.go(Boligf.States.Default.Home);

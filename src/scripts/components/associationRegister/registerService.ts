@@ -15,10 +15,11 @@ module Boligf {
 
 	export class RegisterService implements IRegisterService {
 
-		static $inject = ['$q', 'localStorageService', 'IUserService', 'IAssociationService'];
+		static $inject = ['$q', '$http', 'localStorageService', 'IUserService', 'IAssociationService'];
 
 		constructor(
 			private $q: angular.IQService,
+			private $http: angular.IHttpService,
 			private localStorageService: angular.local.storage.ILocalStorageService,
 			private userService: IUserService,
 			private associationService: IAssociationService
@@ -27,6 +28,9 @@ module Boligf {
 		}
 		
 		public get isReadyForAddAddresses() {
+			
+			// TODO: Remove! its only for testings
+			return true;
 			
 			var data = this.getAssociationFromStorage();
 			if (data && data.id !== "" && data.id !== undefined && data.id !== null) {
@@ -43,7 +47,7 @@ module Boligf {
 		
 		registerUserWithAddress(user: IRegisterUser, association: IRegisterAssociation) {
 
-			var defer = this.$q.defer<void>();
+			var defer = this.$q.defer<any>();
 			
 			var internalUser = user as UserRegisterViewModel;
 			var internalAssociation = association as AssociationRegisterViewModel;
@@ -57,10 +61,31 @@ module Boligf {
 					
 					internalAssociation.id = associationId;
 					
-					this.localStorageService.set("register_user", internalUser);
-					this.localStorageService.set("register_association", internalAssociation);
-					
-					defer.resolve();
+					var url = "https://dawa.aws.dk/adresser?id=" + internalAssociation.addressId;
+			
+					this.$http.get(url).then((result: any) => {
+						
+						var lat = 0;
+						var lng = 0;
+						
+						result.data.forEach((address: DawaAddress) => {
+							
+							lat = address.adgangsadresse.adgangspunkt.koordinater[1];
+							lng = address.adgangsadresse.adgangspunkt.koordinater[0];
+						});
+						
+						this.saveRegisteredUser(internalUser);
+						this.saveRegisteredAssociation(internalAssociation);
+						
+						defer.resolve([lat, lng]);
+		
+					}).catch((b) => {
+						
+						this.saveRegisteredUser(internalUser);
+						this.saveRegisteredAssociation(internalAssociation);
+						
+						defer.resolve([0, 0]);
+					});
 
 				}).catch(() => {
 
@@ -74,6 +99,14 @@ module Boligf {
 			});
 			
 			return defer.promise;
+		}
+		
+		private saveRegisteredUser(user: UserRegisterViewModel) {
+			this.localStorageService.set("register_user", user);
+		}
+		
+		private saveRegisteredAssociation(assocation: AssociationRegisterViewModel) {
+			this.localStorageService.set("register_association", assocation);
 		}
 		
 		private getAssociationFromStorage(): AssociationRegisterViewModel {

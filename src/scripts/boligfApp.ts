@@ -143,7 +143,7 @@ module Boligf {
 					controllerAs: "registerMemberCtrl"
 				})
 				.state(Boligf.States.Association.AddAddresses, {
-					url: '/add-addresses',
+					url: '/add-addresses?lat&lng',
 					templateUrl: "/views/components/associationAddAddresses/associationAddAddresses.html",
 					controller: "Association_AddAddressesController",
 					controllerAs: "addAddressesCtrl"

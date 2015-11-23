@@ -180,8 +180,8 @@ module Boligf {
 			restrict: 'E',
 			scope: {
 				selections: "=",
-				centerLat: "@",
-				centerLng: "@",
+				centerLat: "=",
+				centerLng: "=",
 				onAddressesFound: "&",
 				onMapCleaned: "&"
 			},

@@ -20,8 +20,8 @@
 <div class="column small-12 medium-7 large-8 large-pull-4">
 	<div class="box">
 		<boligf-polygon-creator 
-			center-lat="55.6903984669864" 
-			center-lng="12.5304629780526" 
+			center-lat="addAddressesCtrl.centerLat" 
+			center-lng="addAddressesCtrl.centerLng" 
 			selections="addAddressesCtrl.selections" 
 			on-addresses-found="addAddressesCtrl.onAddressesFound(selection)" 
 			on-map-cleaned="addAddressesCtrl.onMapCleaned()"></boligf-polygon-creator>
