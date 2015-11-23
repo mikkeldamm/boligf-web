@@ -17,7 +17,7 @@
 			this.$cookies.put("associationId", value);
 		}
 		
-		constructor(private $cookies: ng.cookies.ICookieStoreService) {
+		constructor(private $cookies: angular.cookies.ICookieStoreService) {
 			
 		}
 		

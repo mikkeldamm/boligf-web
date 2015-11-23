@@ -16,8 +16,8 @@
 
 	export interface IUserService {
 		
-		post(model: IRegisterUser): ng.IPromise<string>;
-		delete(userId: string): ng.IPromise<boolean>;
+		post(model: IRegisterUser): angular.IPromise<string>;
+		delete(userId: string): angular.IPromise<boolean>;
 	}
 
 	export class UserService implements IUserService {
@@ -30,12 +30,12 @@
 			
 		}
 
-		post(model: IRegisterUser): ng.IPromise<string> {
+		post(model: IRegisterUser): angular.IPromise<string> {
 
 			return this.apiService.post<string>("/user", model);
 		}
 
-		delete(userId: string): ng.IPromise<boolean> {
+		delete(userId: string): angular.IPromise<boolean> {
 
 			return this.apiService.delete<boolean>("/user/" + userId);
 		}

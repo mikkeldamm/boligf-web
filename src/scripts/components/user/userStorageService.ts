@@ -26,7 +26,7 @@
 			this.$cookies.put("userName", value);
 		}
 
-		constructor(private $cookies: ng.cookies.ICookieStoreService) {
+		constructor(private $cookies: angular.cookies.ICookieStoreService) {
 			
 		}
 		

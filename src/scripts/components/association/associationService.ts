@@ -16,7 +16,7 @@
 
 	export interface IAssociationService {
 
-		post(model: IRegisterAssociation): ng.IPromise<string>;
+		post(model: IRegisterAssociation): angular.IPromise<string>;
 	}
 
 	export class AssociationService implements IAssociationService {
@@ -29,7 +29,7 @@
 			
 		}
 
-		post(model: IRegisterAssociation): ng.IPromise<string> {
+		post(model: IRegisterAssociation): angular.IPromise<string> {
 
 			return this.apiService.post<string>("/association", model);
 		}

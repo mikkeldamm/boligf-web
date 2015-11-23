@@ -14,8 +14,8 @@
 	}
 
 	export interface IAssociationAddressService {
-		getCode(code: string): ng.IPromise<IAssociationAddressCode>;
-		post(model: IRegisterUserToAddress): ng.IPromise<string>;
+		getCode(code: string): angular.IPromise<IAssociationAddressCode>;
+		post(model: IRegisterUserToAddress): angular.IPromise<string>;
 	}
 
 	export class AssociationAddressService implements IAssociationAddressService {
@@ -30,12 +30,12 @@
 			
 		}
 
-		getCode(code: string): ng.IPromise<IAssociationAddressCode> {
+		getCode(code: string): angular.IPromise<IAssociationAddressCode> {
 			
 			return this.apiService.get<IAssociationAddressCode>("/association/address/code/" + code);
 		}
 
-		post(model: IRegisterUserToAddress): ng.IPromise<string> {
+		post(model: IRegisterUserToAddress): angular.IPromise<string> {
 
 			return this.apiService.post<string>("/association/" + model.associationId + "/address/" + model.addressId + "/user", model);
 		}

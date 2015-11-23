@@ -1,16 +1,16 @@
 ﻿module Boligf {
 
-	export interface IMemberLoginInfoComponentScope extends ng.IScope {
+	export interface IMemberLoginInfoComponentScope extends angular.IScope {
 		isProtected: boolean;
 	}
 
-	export interface IMemberLoginInfoDirective extends ng.IDirective {
+	export interface IMemberLoginInfoDirective extends angular.IDirective {
 		restrict: string;
 		scope: any;
 		controller: any;
 		controllerAs: string;
 		replace: boolean;
-		link(scope: ng.IScope, element: JQuery, attributes: ng.IAttributes, controller: IMemberLoginInfoComponent): void;
+		link(scope: angular.IScope, element: JQuery, attributes: angular.IAttributes, controller: IMemberLoginInfoComponent): void;
 	}
 
 	export interface IMemberLoginInfoComponent {
@@ -67,9 +67,9 @@
 		}
 	}
 
-	export function memberLoginInfoDirective(authenticationService: IAuthenticationService): ng.IDirective {
+	export function memberLoginInfoDirective(authenticationService: IAuthenticationService): angular.IDirective {
 		
-		function link(scope: IMemberLoginInfoComponentScope, element: JQuery, attributes: ng.IAttributes, controller: IMemberLoginInfoComponent): void {
+		function link(scope: IMemberLoginInfoComponentScope, element: JQuery, attributes: angular.IAttributes, controller: IMemberLoginInfoComponent): void {
 
 			scope.$watch(
 				() => {

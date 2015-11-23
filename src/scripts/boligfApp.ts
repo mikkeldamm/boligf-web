@@ -1,15 +1,17 @@
-﻿declare module Boligf {
+﻿/// <reference path="../typings/t.d.ts"/>
+
+declare module Boligf {
 	var Config: Boligf.IConfig;
 }
 
 module Boligf {
 
-	export interface IBoligfApp extends ng.IModule { }
+	export interface IBoligfApp extends angular.IModule { }
 	export interface IConfig {
 		ApiAccess(hideApi?: boolean): string;
 	}
 
-	export interface IRootScope extends ng.IRootScopeService {
+	export interface IRootScope extends angular.IRootScopeService {
 		isLoading: boolean;
 	}
 
@@ -44,11 +46,11 @@ module Boligf {
 			];
 
 			var configFunc = (
-				stateProvider: ng.ui.IStateProvider,
-				urlRouterProvider: ng.ui.IUrlRouterProvider,
-				httpProvider: ng.IHttpProvider,
-				translateProvider: ng.translate.ITranslateProvider,
-				locationProvider: ng.ILocationProvider
+				stateProvider: angular.ui.IStateProvider,
+				urlRouterProvider: angular.ui.IUrlRouterProvider,
+				httpProvider: angular.IHttpProvider,
+				translateProvider: angular.translate.ITranslateProvider,
+				locationProvider: angular.ILocationProvider
 			) => {
 
 				this.setupTranslations(translateProvider);
@@ -66,7 +68,7 @@ module Boligf {
 			App.config(providerInjects);
 		}
 
-		private setupTranslations(translateProvider: ng.translate.ITranslateProvider) {
+		private setupTranslations(translateProvider: angular.translate.ITranslateProvider) {
 
 			translateProvider.useStaticFilesLoader({
 				prefix: '/assets/locales/locale-',
@@ -79,7 +81,7 @@ module Boligf {
 
 		}
 
-		private setupDefaultRouting(urlRouterProvider: ng.ui.IUrlRouterProvider, locationProvider: ng.ILocationProvider) {
+		private setupDefaultRouting(urlRouterProvider: angular.ui.IUrlRouterProvider, locationProvider: angular.ILocationProvider) {
 
 			urlRouterProvider.otherwise("/");
 			urlRouterProvider.when("/association/registermember", "/association/registermember/");
@@ -87,7 +89,7 @@ module Boligf {
 			locationProvider.html5Mode(false);
 		}
 
-		private setupStates(stateProvider: ng.ui.IStateProvider) {
+		private setupStates(stateProvider: angular.ui.IStateProvider) {
 
 			stateProvider
 				.state(Boligf.States.Default.Home, {
@@ -162,7 +164,7 @@ module Boligf {
 				});
 		}
 
-		private setupHttpInterceptors(httpProvider: ng.IHttpProvider) {
+		private setupHttpInterceptors(httpProvider: angular.IHttpProvider) {
 
 			httpProvider.interceptors.push("IInterceptHttpProvider");
 		}

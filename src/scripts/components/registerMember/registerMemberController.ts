@@ -31,11 +31,11 @@
 		registerCode: string;
 		
 		constructor(
-			private $state: ng.ui.IStateService,
-			private $stateParams: ng.ui.IStateParamsService,
+			private $state: angular.ui.IStateService,
+			private $stateParams: angular.ui.IStateParamsService,
 			private userService: IUserService,
 			private associationAddressService: IAssociationAddressService,
-			private $timeout: ng.ITimeoutService
+			private $timeout: angular.ITimeoutService
 			) {
 			
 			this.selectedOption = -1;

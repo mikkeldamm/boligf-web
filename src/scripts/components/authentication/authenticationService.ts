@@ -2,7 +2,7 @@
 
 	export interface IAuthenticationService {
 		isAuthenticated: boolean;
-		login(email: string, password: string): ng.IPromise<boolean>;
+		login(email: string, password: string): angular.IPromise<boolean>;
 	}
 
 	export class AuthenticationService implements IAuthenticationService {
@@ -16,8 +16,8 @@
 		}
 
 		constructor(
-			private $http: ng.IHttpService,
-			private $q: ng.IQService,
+			private $http: angular.IHttpService,
+			private $q: angular.IQService,
 			private bearerTokenStore: Boligf.IStoreBearerToken,
 			private userDataStore: Boligf.IStoreUserData,
 			private associationDataStore: Boligf.IStoreAssociationData
@@ -30,7 +30,7 @@
 			}
 		}
 
-		public login(email: string, password: string): ng.IPromise<boolean> {
+		public login(email: string, password: string): angular.IPromise<boolean> {
 
 			var defer = this.$q.defer();
 			var data: string = "grant_type=password&username=" + email + "&password=" + password;

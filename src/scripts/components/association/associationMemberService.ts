@@ -21,8 +21,8 @@
 	export interface IAssociationMemberService {
 
 		setup(associationId: string);
-		getAll(associationId?: string): ng.IPromise<IAssociationMember[]>;
-		getSingle(userId: string, associationId?: string): ng.IPromise<IAssociationMember>;
+		getAll(associationId?: string): angular.IPromise<IAssociationMember[]>;
+		getSingle(userId: string, associationId?: string): angular.IPromise<IAssociationMember>;
 	}
 
 	export class AssociationMemberService implements IAssociationMemberService {
@@ -43,13 +43,13 @@
 			return this;
 		}
 
-		getAll(): ng.IPromise<IAssociationMember[]> {
+		getAll(): angular.IPromise<IAssociationMember[]> {
 
 			this.ensureSetup();
 			return this.apiService.get<IAssociationMember[]>(this.getUrlString(this.associationId));
 		}
 
-		getSingle(userId: string): ng.IPromise<IAssociationMember> {
+		getSingle(userId: string): angular.IPromise<IAssociationMember> {
 
 			this.ensureSetup();
 			return this.apiService.get<IAssociationMember>(this.getUrlString(this.associationId, userId));

@@ -1,18 +1,12 @@
 {
-    "version": "1.5.1",
+    "version": "1.6.2",
     "compilerOptions": {
         "target": "es5",
-        "module": "amd",
-        "declaration": false,
+        "module": "commonjs",
+        "declaration": true,
         "noImplicitAny": false,
         "removeComments": false,
         "noLib": true,
         "emitDecoratorMetadata": true
-    },
-    "filesGlob": [
-        "./src/scripts/**/*.ts"
-    ],
-    "files": [
-        "./typings/tsd.d.ts"
-    ]
+    }
 }

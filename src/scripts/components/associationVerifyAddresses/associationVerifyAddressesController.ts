@@ -7,7 +7,7 @@
 		selections: Selection[];
 		
 		constructor(
-			private $state: ng.ui.IStateService,
+			private $state: angular.ui.IStateService,
 			private registerService: IRegisterService,
 			private dataPassingService: IPassData) {
 			

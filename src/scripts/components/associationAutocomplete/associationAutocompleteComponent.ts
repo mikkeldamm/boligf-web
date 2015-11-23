@@ -8,19 +8,19 @@
 
 	}
 	
-	export interface IAssociationAutocompleteComponentScope extends ng.IScope {
+	export interface IAssociationAutocompleteComponentScope extends angular.IScope {
 		searchQuery: any;
 		showList: any;
 		hideList: any;
 	}
 
-	export interface IAssociationAutocompleteDirective extends ng.IDirective {
+	export interface IAssociationAutocompleteDirective extends angular.IDirective {
 		restrict: string;
 		scope: any;
 		controller: any;
 		controllerAs: string;
 		replace: boolean;
-		link(scope: IAssociationAutocompleteComponentScope, element: JQuery, attributes: ng.IAttributes, controller: IAssociationAutocompleteComponent): void;
+		link(scope: IAssociationAutocompleteComponentScope, element: JQuery, attributes: angular.IAttributes, controller: IAssociationAutocompleteComponent): void;
 	}
 
 	export interface IAssociationAutocompleteComponent {
@@ -50,11 +50,11 @@
 		hideList: any;
 		itemSelected: any;
 
-		private timeoutPromise: ng.IPromise<any>;
+		private timeoutPromise: angular.IPromise<any>;
 
 		static $inject = ['$http', '$timeout'];
 
-		constructor(private $http: ng.IHttpService, private $timeout: ng.ITimeoutService) {
+		constructor(private $http: angular.IHttpService, private $timeout: angular.ITimeoutService) {
 
 			this.currentItemIndex = 0;
 		}
@@ -248,9 +248,9 @@
 		}
 	}
 
-	export function associationAutocompleteDirective(): ng.IDirective {
+	export function associationAutocompleteDirective(): angular.IDirective {
 
-		function link(scope: IAssociationAutocompleteComponentScope, element: JQuery, attributes: ng.IAttributes, controller: IAssociationAutocompleteComponent): void {
+		function link(scope: IAssociationAutocompleteComponentScope, element: JQuery, attributes: angular.IAttributes, controller: IAssociationAutocompleteComponent): void {
 
 			var itemJustSelected: boolean = false;
 			var inputElement = element.find('input');

@@ -1,6 +1,6 @@
 ﻿module Boligf {
 
-	export interface ILoginController extends ng.IScope {
+	export interface ILoginController extends angular.IScope {
 		email: string;
 		password: string;
 		login(): void;
@@ -14,7 +14,7 @@
 		password: string;
 
 		constructor(
-			private $state: ng.ui.IStateService,
+			private $state: angular.ui.IStateService,
 			private authenticationService: IAuthenticationService
 			) {
 

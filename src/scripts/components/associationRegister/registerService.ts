@@ -10,7 +10,7 @@ module Boligf {
 	export interface IRegisterService {
 		isReadyForAddAddresses: boolean;
 		isReadyForVerifyAddresses: boolean;
-		registerUserWithAddress(user: IRegisterUser, association: IRegisterAssociation): ng.IPromise<void>;
+		registerUserWithAddress(user: IRegisterUser, association: IRegisterAssociation): angular.IPromise<void>;
 	}
 
 	export class RegisterService implements IRegisterService {
@@ -18,8 +18,8 @@ module Boligf {
 		static $inject = ['$q', 'localStorageService', 'IUserService', 'IAssociationService'];
 
 		constructor(
-			private $q: ng.IQService,
-			private localStorageService: ng.local.storage.ILocalStorageService,
+			private $q: angular.IQService,
+			private localStorageService: angular.local.storage.ILocalStorageService,
 			private userService: IUserService,
 			private associationService: IAssociationService
 		) {

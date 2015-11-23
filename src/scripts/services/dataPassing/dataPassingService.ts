@@ -13,7 +13,7 @@
 		
 		private dataCollection = {};
 
-		constructor(private localStorageService: ng.local.storage.ILocalStorageService) {
+		constructor(private localStorageService: angular.local.storage.ILocalStorageService) {
 			
 		}
 

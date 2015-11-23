@@ -1,21 +1,21 @@
-﻿/// <reference path="../../_references.ts"/>
+﻿/// <reference path="../typings/t.d.ts"/>
 
 module Boligf {
 	
-	export interface IInputSearchingComponentScope extends ng.IScope {
+	export interface IInputSearchingComponentScope extends angular.IScope {
 		eventStatus: number;
 	}
 
-	export interface IInputSearchingDirective extends ng.IDirective {
+	export interface IInputSearchingDirective extends angular.IDirective {
 		restrict: string;
 		scope: any;
 		replace: boolean;
-		link(scope: ng.IScope, element: JQuery, attributes: ng.IAttributes): void;
+		link(scope: angular.IScope, element: JQuery, attributes: angular.IAttributes): void;
 	}
 	
-	export function inputSearchingDirective(): ng.IDirective {
+	export function inputSearchingDirective(): angular.IDirective {
 
-		function link(scope: IInputSearchingComponentScope, element: JQuery, attributes: ng.IAttributes): void {
+		function link(scope: IInputSearchingComponentScope, element: JQuery, attributes: angular.IAttributes): void {
 			
 			element.addClass('searching-status');
 

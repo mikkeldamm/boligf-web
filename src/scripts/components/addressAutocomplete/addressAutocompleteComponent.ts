@@ -27,19 +27,19 @@
 		adresse: IDawaAddress;
 	}
 
-	export interface IAddressAutocompleteComponentScope extends ng.IScope {
+	export interface IAddressAutocompleteComponentScope extends angular.IScope {
 		searchQuery: any;
 		showList: any;
 		hideList: any;
 	}
 
-	export interface IAddressAutocompleteDirective extends ng.IDirective {
+	export interface IAddressAutocompleteDirective extends angular.IDirective {
 		restrict: string;
 		scope: any;
 		controller: any;
 		controllerAs: string;
 		replace: boolean;
-		link(scope: IAddressAutocompleteComponentScope, element: JQuery, attributes: ng.IAttributes, controller: IAddressAutocompleteComponent): void;
+		link(scope: IAddressAutocompleteComponentScope, element: JQuery, attributes: angular.IAttributes, controller: IAddressAutocompleteComponent): void;
 	}
 
 	export interface IAddressAutocompleteComponent {
@@ -69,11 +69,11 @@
 		hideList: any;
 		addressSelected: any;
 
-		private timeoutPromise: ng.IPromise<any>;
+		private timeoutPromise: angular.IPromise<any>;
 
 		static $inject = ['$http', '$timeout'];
 
-		constructor(private $http: ng.IHttpService, private $timeout: ng.ITimeoutService) {
+		constructor(private $http: angular.IHttpService, private $timeout: angular.ITimeoutService) {
 
 			this.currentAddressIndex = 0;
 		}
@@ -162,9 +162,9 @@
 		}
 	}
 
-	export function addressAutocompleteDirective(): ng.IDirective {
+	export function addressAutocompleteDirective(): angular.IDirective {
 
-		function link(scope: IAddressAutocompleteComponentScope, element: JQuery, attributes: ng.IAttributes, controller: IAddressAutocompleteComponent): void {
+		function link(scope: IAddressAutocompleteComponentScope, element: JQuery, attributes: angular.IAttributes, controller: IAddressAutocompleteComponent): void {
 
 			var addressJustSelected: boolean = false;
 			var inputElement = element.find('input');

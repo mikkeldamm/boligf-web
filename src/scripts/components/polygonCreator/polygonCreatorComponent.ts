@@ -88,7 +88,7 @@ module Boligf {
 		}
 	} 
 
-	export interface IPolygonCreatorComponentScope extends ng.IScope {
+	export interface IPolygonCreatorComponentScope extends angular.IScope {
 		selections: Selection[];
 		centerLat: number;
 		centerLng: number;
@@ -111,7 +111,7 @@ module Boligf {
 		public selections: Selection[];
 		public maker: PolygonMaker;
 
-		constructor(private $scope: IPolygonCreatorComponentScope, private $http: ng.IHttpService) {
+		constructor(private $scope: IPolygonCreatorComponentScope, private $http: angular.IHttpService) {
 			
 			this.pointerIsCreated = false;
 			this.selections = [];
@@ -169,9 +169,9 @@ module Boligf {
 		}
 	}
 
-	export function polygonCreatorDirective(): ng.IDirective {
+	export function polygonCreatorDirective(): angular.IDirective {
 		
-		function link(scope: IPolygonCreatorComponentScope, element: JQuery, attributes: ng.IAttributes, controller: IPolygonCreatorComponent): void {
+		function link(scope: IPolygonCreatorComponentScope, element: JQuery, attributes: angular.IAttributes, controller: IPolygonCreatorComponent): void {
 
 			controller.maker.createMap(element.find('.map-area'), scope.centerLat, scope.centerLng);
 		}

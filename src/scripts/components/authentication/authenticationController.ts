@@ -1,6 +1,6 @@
 ﻿module Boligf {
 
-	export interface IAuthenticationControllerScope extends ng.IScope {
+	export interface IAuthenticationControllerScope extends angular.IScope {
 		testM(): void;
 		testM2(): void;
 		lars: string;
@@ -14,7 +14,7 @@
 
 		constructor(
 			private $scope: IAuthenticationControllerScope,
-			private $http: ng.IHttpService,
+			private $http: angular.IHttpService,
 			private authenticationService: IAuthenticationService,
 			private bearerTokenStore: Boligf.IStoreBearerToken
 			) {

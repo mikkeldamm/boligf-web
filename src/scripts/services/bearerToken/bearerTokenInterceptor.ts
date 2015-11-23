@@ -1,20 +1,20 @@
 ﻿module Boligf {
 
 	export interface IInterceptHttpProvider {
-		request(config: ng.IRequestConfig): ng.IRequestConfig;
-		requestError(rejection: ng.IHttpPromiseCallback<any>): ng.IPromise<any>;
-		responseError(rejection: ng.IHttpPromiseCallbackArg<any>): ng.IPromise<any>;
+		request(config: angular.IRequestConfig): angular.IRequestConfig;
+		requestError(rejection: angular.IHttpPromiseCallback<any>): angular.IPromise<any>;
+		responseError(rejection: angular.IHttpPromiseCallbackArg<any>): angular.IPromise<any>;
 	}
 
 	export class BearerTokenInterceptor implements IInterceptHttpProvider {
 
 		static $inject = ['$q', 'IStoreBearerToken'];
 
-		constructor(private $q: ng.IQService, private bearerTokenStorageService: Boligf.IStoreBearerToken) {
+		constructor(private $q: angular.IQService, private bearerTokenStorageService: Boligf.IStoreBearerToken) {
 
 		}
 
-		public request = (config: ng.IRequestConfig): ng.IRequestConfig => {
+		public request = (config: angular.IRequestConfig): angular.IRequestConfig => {
 
 			config.headers = config.headers || {};
 
@@ -27,12 +27,12 @@
 			return config;
 		};
 
-		public requestError = (rejection: ng.IHttpPromiseCallback<any>): ng.IPromise<any> => {
+		public requestError = (rejection: angular.IHttpPromiseCallback<any>): angular.IPromise<any> => {
 
 			return this.$q.reject(rejection);
 		};
 
-		public responseError = (rejection: ng.IHttpPromiseCallbackArg<any>): ng.IPromise<any> => {
+		public responseError = (rejection: angular.IHttpPromiseCallbackArg<any>): angular.IPromise<any> => {
 
 			if (rejection != null && rejection.status === 401 && this.bearerTokenStorageService.anyToken()) {
 

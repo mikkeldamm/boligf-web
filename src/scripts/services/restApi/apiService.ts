@@ -1,10 +1,10 @@
 ﻿module Boligf {
 	
 	export interface IApiService {
-		get<T>(url: string, config?: ng.IRequestShortcutConfig): ng.IPromise<T>;	
-		delete<T>(url: string, config?: ng.IRequestShortcutConfig): ng.IPromise<T>;
-		post<T>(url: string, data: any, config?: ng.IRequestShortcutConfig): ng.IPromise<T>;
-		put<T>(url: string, data: any, config?: ng.IRequestShortcutConfig): ng.IPromise<T>;
+		get<T>(url: string, config?: angular.IRequestShortcutConfig): angular.IPromise<T>;	
+		delete<T>(url: string, config?: angular.IRequestShortcutConfig): angular.IPromise<T>;
+		post<T>(url: string, data: any, config?: angular.IRequestShortcutConfig): angular.IPromise<T>;
+		put<T>(url: string, data: any, config?: angular.IRequestShortcutConfig): angular.IPromise<T>;
 	}
 
 	export class ApiService implements IApiService {
@@ -12,13 +12,13 @@
 		static $inject = ['$http', '$q'];
 
 		constructor(
-			private $http: ng.IHttpService,
-			private $q: ng.IQService
+			private $http: angular.IHttpService,
+			private $q: angular.IQService
 			) {
 
 		}
 
-		get<T>(url: string, config?: ng.IRequestShortcutConfig): ng.IPromise<T> {
+		get<T>(url: string, config?: angular.IRequestShortcutConfig): angular.IPromise<T> {
 
 			var defer = this.$q.defer();
 
@@ -29,7 +29,7 @@
 			return defer.promise;
 		}
 
-		delete<T>(url: string, config?: ng.IRequestShortcutConfig): ng.IPromise<T> {
+		delete<T>(url: string, config?: angular.IRequestShortcutConfig): angular.IPromise<T> {
 
 			var defer = this.$q.defer();
 
@@ -40,7 +40,7 @@
 			return defer.promise;
 		}
 
-		post<T>(url: string, data: any, config?: ng.IRequestShortcutConfig): ng.IPromise<T> {
+		post<T>(url: string, data: any, config?: angular.IRequestShortcutConfig): angular.IPromise<T> {
 
 			var defer = this.$q.defer();
 
@@ -51,7 +51,7 @@
 			return defer.promise;
 		}
 
-		put<T>(url: string, data: any, config?: ng.IRequestShortcutConfig): ng.IPromise<T> {
+		put<T>(url: string, data: any, config?: angular.IRequestShortcutConfig): angular.IPromise<T> {
 
 			var defer = this.$q.defer();
 

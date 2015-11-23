@@ -1,16 +1,16 @@
 ﻿module Boligf {
 
-	export interface IIsAuthorizedDirectiveScope extends ng.IScope {
+	export interface IIsAuthorizedDirectiveScope extends angular.IScope {
 		isProtected: boolean;
 	}
 
-	export interface IIsAuthorizedDirective extends ng.IDirective {
+	export interface IIsAuthorizedDirective extends angular.IDirective {
 		restrict: string;
 		scope: any;
-		link(scope: ng.IScope, element: JQuery, attributes: ng.IAttributes): void;
+		link(scope: angular.IScope, element: JQuery, attributes: angular.IAttributes): void;
 	}
 
-	export function isAuthorizedDirective(authenticationService: Boligf.IAuthenticationService): ng.IDirective {
+	export function isAuthorizedDirective(authenticationService: Boligf.IAuthenticationService): angular.IDirective {
 
 		var directive = <IIsAuthorizedDirective> {
 			restrict: 'A',
@@ -20,7 +20,7 @@
 			link: link
 		}
 
-		function link(scope: IIsAuthorizedDirectiveScope, element: JQuery, attributes: ng.IAttributes): void {
+		function link(scope: IIsAuthorizedDirectiveScope, element: JQuery, attributes: angular.IAttributes): void {
 
 			scope.$watch(
 				() => {

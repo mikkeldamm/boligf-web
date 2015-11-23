@@ -16,7 +16,7 @@
 
 		constructor(
 			private $rootScope: IRootScope,
-			private $state: ng.ui.IStateService,
+			private $state: angular.ui.IStateService,
 			private stateLoading: IStateLoading,
 			private registerService: IRegisterService
 			) {
