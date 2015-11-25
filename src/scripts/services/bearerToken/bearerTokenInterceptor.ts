@@ -18,10 +18,13 @@
 
 			config.headers = config.headers || {};
 
-			if (this.bearerTokenStorageService.anyToken()) {
+			if (config.url.indexOf(Boligf.Config.ApiAccess()) > -1) {
 
-				config.headers["Authorization"] = 'Bearer ' + this.bearerTokenStorageService.token;
-				config.headers["ContentType"] = 'application/x-www-form-urlencoded';
+				if (this.bearerTokenStorageService.anyToken()) {
+	
+					config.headers["Authorization"] = 'Bearer ' + this.bearerTokenStorageService.token;
+					config.headers["ContentType"] = 'application/x-www-form-urlencoded';
+				}
 			}
 
 			return config;

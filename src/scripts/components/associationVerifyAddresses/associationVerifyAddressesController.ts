@@ -2,17 +2,20 @@
 	
 	export class AssociationVerifyAddressesController {
 
-		static $inject = ['$state', 'IRegisterService', 'IPassDataService'];
+		static $inject = ['$state', 'IRegisterService', 'IAssociationService', 'IPassDataService', 'stateLoading'];
 		
 		selections: Selection[];
 		
 		constructor(
 			private $state: angular.ui.IStateService,
 			private registerService: IRegisterService,
-			private dataPassingService: IPassData) {
+			private associationService: IAssociationService,
+			private dataPassingService: IPassData,
+			private stateLoading: IStateLoading
+		) {
 			
 			if (!this.registerService.isReadyForVerifyAddresses) {
-				this.$state.go(States.Association.Register);	
+				this.$state.go(States.Association.Register);
 			}
 			
 			this.selections = dataPassingService.pull<Selection[]>('selectionsOfAddresses', false);
@@ -34,7 +37,22 @@
 		
 		addAddresses(): void {
 			
-			// use service here and call api to insert addresses
+			var addresses: BoligfAddress[] = [];
+			
+			for (var i = 0; i < this.selections.length; i++) {
+				addresses = addresses.concat(this.selections[i].addresses);
+			}
+			
+			this.stateLoading.start();
+			
+			this.associationService.postAddresses(this.registerService.associationId, addresses).then(() => {
+				
+				this.$state.go(States.Default.Residents);
+				
+			}).finally(() => {
+				
+				this.stateLoading.stop();
+			});
 		}
 	}
 

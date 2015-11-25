@@ -10,19 +10,21 @@ module Boligf {
 	export interface IRegisterService {
 		isReadyForAddAddresses: boolean;
 		isReadyForVerifyAddresses: boolean;
+		associationId: string;
 		registerUserWithAddress(user: IRegisterUser, association: IRegisterAssociation): angular.IPromise<void>;
 	}
 
 	export class RegisterService implements IRegisterService {
 
-		static $inject = ['$q', '$http', 'localStorageService', 'IUserService', 'IAssociationService'];
+		static $inject = ['$q', '$http', 'localStorageService', 'IUserService', 'IAssociationService', 'IAuthenticationService'];
 
 		constructor(
 			private $q: angular.IQService,
 			private $http: angular.IHttpService,
 			private localStorageService: angular.local.storage.ILocalStorageService,
 			private userService: IUserService,
-			private associationService: IAssociationService
+			private associationService: IAssociationService,
+			private authenticationService: IAuthenticationService
 		) {
 			
 		}
@@ -30,7 +32,7 @@ module Boligf {
 		public get isReadyForAddAddresses() {
 			
 			// TODO: Remove! its only for testings
-			return true;
+			//return true;
 			
 			var data = this.getAssociationFromStorage();
 			if (data && data.id !== "" && data.id !== undefined && data.id !== null) {
@@ -43,6 +45,11 @@ module Boligf {
 		public get isReadyForVerifyAddresses() {
 			
 			return true;
+		}
+		
+		public get associationId() {
+			
+			return this.getAssociationFromStorage().id;
 		}
 		
 		registerUserWithAddress(user: IRegisterUser, association: IRegisterAssociation) {
@@ -61,30 +68,33 @@ module Boligf {
 					
 					internalAssociation.id = associationId;
 					
-					var url = "https://dawa.aws.dk/adresser?id=" + internalAssociation.addressId;
+					this.authenticationService.login(internalUser.email, internalUser.password).then(() => {
+						
+						var url = "https://dawa.aws.dk/adresser?id=" + internalAssociation.addressId;
 			
-					this.$http.get(url).then((result: any) => {
-						
-						var lat = 0;
-						var lng = 0;
-						
-						result.data.forEach((address: DawaAddress) => {
+						this.$http.get(url).then((result: any) => {
 							
-							lat = address.adgangsadresse.adgangspunkt.koordinater[1];
-							lng = address.adgangsadresse.adgangspunkt.koordinater[0];
+							var lat = 0;
+							var lng = 0;
+							
+							result.data.forEach((address: DawaAddress) => {
+								
+								lat = address.adgangsadresse.adgangspunkt.koordinater[1];
+								lng = address.adgangsadresse.adgangspunkt.koordinater[0];
+							});
+							
+							this.saveRegisteredUser(internalUser);
+							this.saveRegisteredAssociation(internalAssociation);
+							
+							defer.resolve([lat, lng]);
+			
+						}).catch((b) => {
+							
+							this.saveRegisteredUser(internalUser);
+							this.saveRegisteredAssociation(internalAssociation);
+							
+							defer.resolve([0, 0]);
 						});
-						
-						this.saveRegisteredUser(internalUser);
-						this.saveRegisteredAssociation(internalAssociation);
-						
-						defer.resolve([lat, lng]);
-		
-					}).catch((b) => {
-						
-						this.saveRegisteredUser(internalUser);
-						this.saveRegisteredAssociation(internalAssociation);
-						
-						defer.resolve([0, 0]);
 					});
 
 				}).catch(() => {
