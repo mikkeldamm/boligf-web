@@ -47,7 +47,7 @@
 			
 			this.associationService.postAddresses(this.registerService.associationId, addresses).then(() => {
 				
-				this.$state.go(States.Default.Residents);
+				this.$state.go(States.Default.Home);
 				
 			}).finally(() => {
 				

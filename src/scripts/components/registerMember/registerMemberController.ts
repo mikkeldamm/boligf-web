@@ -57,6 +57,7 @@
 
 				this.codeSearchStatus = 0;
 
+				/*
 				this.$timeout(() => {
 
 					var addressWithCode = <IAssociationAddressCode> {
@@ -78,22 +79,21 @@
 					this.codeSearchStatus = 2;
 
 				}, 4000);
+				*/
 
-				//this.associationAddressService.getCode(this.registerCode).then((addressWithCode: IAssociationAddressCode) => {
+				this.associationAddressService.getCode(this.registerCode).then((addressWithCode: IAssociationAddressCode) => {
 
-				//	this.addressRegistered.addressId = addressWithCode.id;
-				//	this.addressRegistered.associationId = addressWithCode.associationId;
-				//  this.addressRegistered.associationName = "Skorpen A/B"; // TODO: Get association name from api result here
-				//	this.addressRegistered.addressText = this.combineAddressInfoToText(addressWithCode);
+					this.addressRegistered.addressId = addressWithCode.id;
+					this.addressRegistered.associationId = addressWithCode.associationId;
+				  	this.addressRegistered.associationName = "Skorpen A/B"; // TODO: Get association name from api result here
+					this.addressRegistered.addressText = this.combineAddressInfoToText(addressWithCode);
 
-				//	this.codeSearchStatus = 1;
-				//	this.shouldShowNotFound = false;
+					this.codeSearchStatus = 1;
 
-				//}).catch(() => {
+				}).catch(() => {
 					
-				//	this.codeSearchStatus = 2;
-				//	this.shouldShowNotFound = true;
-				//});
+					this.codeSearchStatus = 2;
+				});
 			}
 		}
 

@@ -17,7 +17,7 @@
 		public request = (config: angular.IRequestConfig): angular.IRequestConfig => {
 
 			config.headers = config.headers || {};
-
+			
 			if (config.url.indexOf(Boligf.Config.ApiAccess()) > -1) {
 
 				if (this.bearerTokenStorageService.anyToken()) {
