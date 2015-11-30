@@ -14,6 +14,7 @@
 		static Base: string = "authentication";
 		static Login: string = "authentication.login";
 		static Logout: string = "authentication.logout";
+		static UnAuthorized: string = "authentication.unauthorized";
 	}
 
 	export class Association {

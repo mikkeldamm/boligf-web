@@ -3,6 +3,7 @@
 	export interface IAuthenticationService {
 		isAuthenticated: boolean;
 		login(email: string, password: string): angular.IPromise<boolean>;
+		logout(): void;
 	}
 
 	export class AuthenticationService implements IAuthenticationService {
@@ -51,6 +52,14 @@
 			});
 
 			return defer.promise;
+		}
+		
+		public logout(): void {
+			
+			this.bearerTokenStore.deleteToken();
+			this.userDataStore.clear();
+			this.associationDataStore.clear();
+			this._isAuthenticated = false;
 		}
 	}
 

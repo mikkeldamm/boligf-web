@@ -51,6 +51,7 @@
 				
 			}).finally(() => {
 				
+				this.dataPassingService.remove('selectionsOfAddresses');
 				this.stateLoading.stop();
 			});
 		}

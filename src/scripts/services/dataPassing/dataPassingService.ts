@@ -4,6 +4,7 @@
 		push<T>(key: string, data: T): void;
 		pull<T>(key: string): T;
 		pull<T>(key: string, remove: boolean): T;
+		remove(key: string): void;
 	}
 	
 
@@ -34,6 +35,11 @@
 			}
 			
 			return <T>data;
+		}
+		
+		remove(key: string): void {
+			
+			this.localStorageService.remove("boligf_" + key)
 		}
 	}
 

@@ -27,7 +27,7 @@
 			var savedSelections = this.dataPassingService.pull<Selection[]>("selectionsOfAddresses");
 			if (savedSelections) {
 				
-				this.selections = savedSelections;
+				this.selections = savedSelections; // TODO: Show polygon on map
 			}
 		}
 		

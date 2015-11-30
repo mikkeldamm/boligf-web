@@ -84,7 +84,7 @@
 		}
 
 		var directive = <IMemberLoginInfoDirective> {
-			restrict: 'AE',
+			restrict: 'E',
 			scope: {},
 			replace: true,
 			templateUrl: '/views/components/memberLoginInfo/memberLoginInfoComponent.html',

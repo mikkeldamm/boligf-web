@@ -66,6 +66,33 @@ module Boligf {
 			providerInjects.push(configFunc);
 
 			App.config(providerInjects);
+			
+			
+			var runProviderInjects: any[] = [
+				'$rootScope', 
+				'$state', 
+				'IAuthenticationService'
+			];
+			
+			var runFunc = (
+				rootScope: IRootScope, 
+				state: angular.ui.IStateService, 
+				authenticationService: IAuthenticationService
+			) => {
+				
+				rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
+					
+					if (toState.data && toState.data.authenticate && !authenticationService.isAuthenticated) {
+						
+						state.transitionTo(Boligf.States.Authentication.UnAuthorized);
+						event.preventDefault(); 
+					}
+				});
+			}
+			
+			runProviderInjects.push(runFunc);
+			
+			App.run(runProviderInjects);
 		}
 
 		private setupTranslations(translateProvider: angular.translate.ITranslateProvider) {
@@ -78,12 +105,11 @@ module Boligf {
 			translateProvider.useMissingTranslationHandlerLog();
 
 			translateProvider.preferredLanguage('en');
-
 		}
 
 		private setupDefaultRouting(urlRouterProvider: angular.ui.IUrlRouterProvider, locationProvider: angular.ILocationProvider) {
 
-			urlRouterProvider.otherwise("/");
+			urlRouterProvider.otherwise("/404");
 			urlRouterProvider.when("/association/registermember", "/association/registermember/");
 
 			locationProvider.html5Mode(false);
@@ -94,73 +120,104 @@ module Boligf {
 			stateProvider
 				.state(Boligf.States.Default.Home, {
 					url: '/',
-					templateUrl: "/views/components/home/home.html"
+					templateUrl: "/views/components/home/home.html",
+					data: { authenticate: true }
 				})
 				.state(Boligf.States.Default.News, {
 					url: '/news',
-					templateUrl: "/views/"
+					templateUrl: "/views/",
+					data: { authenticate: true }
 				})
 				.state(Boligf.States.Default.Documents, {
 					url: '/documents',
-					templateUrl: "/views/"
+					templateUrl: "/views/",
+					data: { authenticate: true }
 				})
 				.state(Boligf.States.Default.Board, {
 					url: '/board',
-					templateUrl: "/views/"
+					templateUrl: "/views/",
+					data: { authenticate: true }
 				})
 				.state(Boligf.States.Default.Residents, {
 					url: '/residents',
-					templateUrl: "/views/"
+					templateUrl: "/views/",
+					data: { authenticate: true }
 				})
 				.state(Boligf.States.Authentication.Base, {
 					url: '/authentication',
 					templateUrl: "/views/components/authentication/authentication.html",
 					controller: "AuthenticationController",
-					controllerAs: "authentication"
+					controllerAs: "authentication",
+					data: { authenticate: false }
+				})
+				.state(Boligf.States.Authentication.UnAuthorized, {
+					url: '/start',
+					templateUrl: "/views/components/unauthorized/unauthorized.html",
+					controller: "UnAuthorizedController",
+					controllerAs: "unauthorizedCtrl",
+					data: { authenticate: false }
 				})
 				.state(Boligf.States.Authentication.Login, {
 					url: '/login',
 					templateUrl: "/views/components/login/login.html",
 					controller: "LoginController",
-					controllerAs: "loginCtrl"
+					controllerAs: "loginCtrl",
+					data: { authenticate: false }
+				})
+				.state(Boligf.States.Authentication.Logout, {
+					url: '/logout',
+					resolve: ['$state', 'IAuthenticationService', (state: angular.ui.IStateService, authenticationService: IAuthenticationService) => {
+						
+						authenticationService.logout();
+						state.go(Boligf.States.Authentication.Login, {}, { reload: true })
+						
+					}],
+					data: { authenticate: false }
 				})
 				.state(Boligf.States.Association.Base, {
 					url: '/association',
 					templateUrl: "/views/components/association/association.html",
 					controller: "AssociationController",
-					controllerAs: "associationCtrl"
+					controllerAs: "associationCtrl",
+					data: { authenticate: false }
 				})
 				.state(Boligf.States.Association.Register, {
 					url: '/register',
 					templateUrl: "/views/components/associationRegister/register.html",
 					controller: "Association_RegisterController",
-					controllerAs: "registerCtrl"
+					controllerAs: "registerCtrl",
+					data: { authenticate: false }
 				})
 				.state(Boligf.States.Association.RegisterMember, {
 					url: '/registermember/:code',
 					templateUrl: "/views/components/registerMember/registerMember.html",
 					controller: "Association_RegisterMemberController",
-					controllerAs: "registerMemberCtrl"
+					controllerAs: "registerMemberCtrl",
+					data: { authenticate: false }
 				})
 				.state(Boligf.States.Association.AddAddresses, {
 					url: '/add-addresses?lat&lng',
 					templateUrl: "/views/components/associationAddAddresses/associationAddAddresses.html",
 					controller: "Association_AddAddressesController",
-					controllerAs: "addAddressesCtrl"
+					controllerAs: "addAddressesCtrl",
+					data: { authenticate: true }
 				})
 				.state(Boligf.States.Association.VerifyAddresses, {
 					url: '/verify-addresses',
 					templateUrl: "/views/components/associationVerifyAddresses/associationVerifyAddresses.html",
 					controller: "Association_VerifyAddressesController",
-					controllerAs: "verifyAddressesCtrl"
+					controllerAs: "verifyAddressesCtrl",
+					data: { authenticate: true }
 				})
 				.state(Boligf.States.Errors.E404, {
 					url: '/404',
-					template: "<span>404 page</span>"
+					templateUrl: "/views/components/errors/404.html",
+					data: { authenticate: false }
 				})
 				.state(Boligf.States.Errors.E403, {
 					url: '/403',
-					template: "<span>403 page</span>"
+					template: "<span>403 page</span>",
+					data: { authenticate: false }
 				});
 		}
 
