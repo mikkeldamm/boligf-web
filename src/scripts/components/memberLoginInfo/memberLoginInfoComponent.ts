@@ -21,6 +21,7 @@
 		door: string;
 		isFloorAndDoorAvailable: boolean;
 		fillMemberInfo(): void;
+		logout(): void;
 	}
 
 	export class MemberLoginInfoComponent implements IMemberLoginInfoComponent {
@@ -40,9 +41,10 @@
 			return false;
 		}
 
-		static $inject = ['IAssociationMemberService', 'IStoreUserData', 'IStoreAssociationData'];
+		static $inject = ['$state', 'IAssociationMemberService', 'IStoreUserData', 'IStoreAssociationData'];
 
 		constructor(
+			private state: angular.ui.IStateService,
 			private associationMemberService: IAssociationMemberService,
 			private userDataStore: IStoreUserData,
 			private associationDataStore: IStoreAssociationData
@@ -65,6 +67,11 @@
 				});
 			}
 		}
+		
+		public logout(): void {
+			
+			this.state.go(Boligf.States.Authentication.Logout);
+		}
 	}
 
 	export function memberLoginInfoDirective(authenticationService: IAuthenticationService): angular.IDirective {
@@ -78,6 +85,8 @@
 				(newValue, oldValue) => {
 					if (newValue) {
 						controller.fillMemberInfo();
+					} else {
+						controller.ready = false;
 					}
 				}
 			);
@@ -88,7 +97,7 @@
 			scope: {},
 			replace: true,
 			templateUrl: '/views/components/memberLoginInfo/memberLoginInfoComponent.html',
-			controller: ['IAssociationMemberService', 'IStoreUserData', 'IStoreAssociationData', Boligf.MemberLoginInfoComponent],
+			controller: ['$state', 'IAssociationMemberService', 'IStoreUserData', 'IStoreAssociationData', Boligf.MemberLoginInfoComponent],
 			controllerAs: "memberLoginInfoCtrl",
 			link: link
 		}

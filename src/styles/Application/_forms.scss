@@ -104,9 +104,11 @@
 				color: #797979;
 			}
 
-			button {
+			button,
+			input[type=submit] {
 
 				@extend .button-action;
+				width: auto;
 			}
 	
 			.column {

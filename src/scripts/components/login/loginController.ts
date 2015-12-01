@@ -8,14 +8,15 @@
 
 	export class LoginController {
 
-		static $inject = ['$state', 'IAuthenticationService'];
+		static $inject = ['$state', 'IAuthenticationService', 'stateLoading'];
 
 		email: string;
 		password: string;
 
 		constructor(
 			private $state: angular.ui.IStateService,
-			private authenticationService: IAuthenticationService
+			private authenticationService: IAuthenticationService,
+			private stateLoading: IStateLoading
 			) {
 
 			// Redirect user to home if is logged in
@@ -25,6 +26,8 @@
 		}
 
 		login(): void {
+
+			this.stateLoading.start();
 
 			this
 				.authenticationService
@@ -38,6 +41,10 @@
 						// TODO: Instead of redirect on failure, then just show error for user
 						this.$state.go(Boligf.States.Errors.E403);
 					}
+				})
+				.finally(() => {
+					
+					this.stateLoading.stop();
 				});
 		}
 	}

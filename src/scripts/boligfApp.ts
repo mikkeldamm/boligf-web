@@ -166,12 +166,8 @@ module Boligf {
 				})
 				.state(Boligf.States.Authentication.Logout, {
 					url: '/logout',
-					resolve: ['$state', 'IAuthenticationService', (state: angular.ui.IStateService, authenticationService: IAuthenticationService) => {
-						
-						authenticationService.logout();
-						state.go(Boligf.States.Authentication.Login, {}, { reload: true })
-						
-					}],
+					controller: "LogoutController",
+					controllerAs: "logoutCtrl",
 					data: { authenticate: false }
 				})
 				.state(Boligf.States.Association.Base, {
