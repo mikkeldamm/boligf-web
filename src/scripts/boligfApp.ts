@@ -140,7 +140,9 @@ module Boligf {
 				})
 				.state(Boligf.States.Default.Residents, {
 					url: '/residents',
-					templateUrl: "/views/",
+					templateUrl: "/views/components/residents/residents.html",
+					controller: "ResidentsController",
+					controllerAs: "residentsCtrl",
 					data: { authenticate: true }
 				})
 				.state(Boligf.States.Authentication.Base, {
