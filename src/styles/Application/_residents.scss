@@ -1,0 +1,78 @@
+.box.tip button {
+    
+	width: 100%;
+}
+
+.box.input {
+	
+    border: 1px solid #DEDEDE;
+    min-height: 0;
+    padding: 1px;
+	margin-bottom: 2em;
+
+	input {
+		
+		border: 0;
+		width: 100%;
+		padding: 1em 0.8em;
+		
+		&:focus, 
+		&:hover {
+			
+			outline: none;
+		}
+	}
+}
+
+.address {
+	
+    margin-bottom: 2em;
+    overflow: auto;
+	
+	h2 {
+		
+		border-bottom: 1px solid #DADADA;
+		font-weight: normal;
+		font-size: 1em;
+		padding-bottom: 0.6em;
+		margin: 0 0 1.5em 0;
+	}
+	
+	.resident {
+		
+		min-height: 20px;
+		cursor: pointer;
+		
+		&:hover {
+			
+			box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.2);
+		}
+		
+		h3 {
+			
+			margin: 0 0 0.3em;
+			font-weight: bold;
+			border-bottom: 1px solid #EEF2F3;
+			padding-bottom: 0.3em;
+		}
+
+		p {
+			
+			margin: 0;
+			color: #949494;
+			
+			span {
+				
+				margin-right: 0.6em;
+			}
+		}
+		
+		i {
+			
+			position: absolute;
+			top: 1em;
+			right: 2em;
+			color: #DED49C;
+		}
+	}
+}
