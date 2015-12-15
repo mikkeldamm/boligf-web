@@ -3,6 +3,7 @@ module Boligf {
 	export class BoligfAddress {
 		id: string;
 		streetname: string;
+		streetAddress: string;
 		no: string;
 		floor: string;
 		door: string;

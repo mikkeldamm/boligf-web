@@ -1,127 +1,17 @@
 ﻿<div class="column small-12 medium-8">
 	<div class="box input">
-		<input type="text" placeholder="Søg efter lejlighed eller beboer her">
+		<input type="text" placeholder="Søg efter lejlighed eller beboer her" ng-model="residentsCtrl.addressSearch">
 	</div>
 	<div class="row">
-		<div class="address">
+		<div class="address" ng-repeat="address in residentsCtrl.addresses | filter:{fullAddress: residentsCtrl.addressSearch}">
 			<div class="column small-12">
-				<h2>Nordre Fasanvej 124A</h2>
+				<h2>{{address.street}}</h2>
 			</div>
-			<div class="column small-12 large-4">
+			<div class="column small-12 large-4" ng-class="{'end':$last}" ng-repeat="unit in address.units | filter:{fullAddress: residentsCtrl.addressSearch}">
 				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>0</span>beboere</p>
-					<i class="fa fa-user-times"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4 end">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-		</div>
-		<div class="address">
-			<div class="column small-12">
-				<h2>Nordre Fasanvej 124A</h2>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
-				</div>
-			</div>
-			<div class="column small-12 large-4">
-				<div class="resident box">
-					<h3>3 TV</h3>
-					<p><span>2</span>beboere</p>
-					<i class="fa fa-users"></i>
+					<h3>{{unit.floor}} {{unit.door}}</h3>
+					<p><span>{{unit.residents}}</span>beboere</p>
+					<i class="fa" ng-class="unit.residents > 0 ? 'fa-users' : 'fa-user-times'"></i>
 				</div>
 			</div>
 		</div>
