@@ -3,13 +3,13 @@
 		<input type="text" placeholder="Søg efter lejlighed eller beboer her" ng-model="residentsCtrl.addressSearch">
 	</div>
 	<div class="row">
-		<div class="address" ng-repeat="address in residentsCtrl.addresses | filter:{fullAddress: residentsCtrl.addressSearch}">
+		<div class="address" ng-repeat="address in residentsCtrl.addresses">
 			<div class="column small-12">
 				<h2>{{address.street}}</h2>
 			</div>
 			<div class="column small-12 large-4" ng-class="{'end':$last}" ng-repeat="unit in address.units | filter:{fullAddress: residentsCtrl.addressSearch}">
 				<div class="resident box">
-					<h3>{{unit.floor}} {{unit.door}}</h3>
+					<h3>{{unit.floor}} {{unit.door}}</h3> 
 					<p><span>{{unit.residents}}</span>beboere</p>
 					<i class="fa" ng-class="unit.residents > 0 ? 'fa-users' : 'fa-user-times'"></i>
 				</div>
