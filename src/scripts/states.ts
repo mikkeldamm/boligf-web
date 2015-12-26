@@ -6,7 +6,6 @@
 		static News: string = "news";
 		static Documents: string = "documents";
 		static Board: string = "board";
-		static Residents: string = "residents";
 	}
 
 	export class Authentication {
@@ -24,6 +23,16 @@
 		static RegisterMember: string = "association.registermember";
 		static AddAddresses: string = "association.addaddresses";
 		static VerifyAddresses: string = "association.verifyaddresses";
+	}
+	
+	export class Residents {
+		
+		static Base: string = "residents";
+	}
+	
+	export class Address {
+		
+		static Codes: string = "addresscodes";
 	}
 
 	export class Errors {

@@ -31,3 +31,15 @@
 		background-color: #FDF8DE;
 	}
 }
+
+.option-price {
+	
+    display: block;
+    color: #AB7827;
+    margin-top: 0.5em;
+	
+	&.free {
+		
+		color: #4D8608;
+	}
+}

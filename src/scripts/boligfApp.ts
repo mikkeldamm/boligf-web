@@ -138,11 +138,18 @@ module Boligf {
 					templateUrl: "/views/",
 					data: { authenticate: true }
 				})
-				.state(Boligf.States.Default.Residents, {
+				.state(Boligf.States.Residents.Base, {
 					url: '/residents',
 					templateUrl: "/views/components/residents/residents.html",
 					controller: "ResidentsController",
 					controllerAs: "residentsCtrl",
+					data: { authenticate: true }
+				})
+				.state(Boligf.States.Address.Codes, {
+					url: '/address/codes',
+					templateUrl: "/views/components/addressCodes/addressCodes.html",
+					controller: "AddressCodesController",
+					controllerAs: "addressCodesCtrl",
 					data: { authenticate: true }
 				})
 				.state(Boligf.States.Authentication.Base, {
