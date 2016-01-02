@@ -1,4 +1,6 @@
 var express = require('express');
+var fs = require('fs');
+var pdf = require('html-pdf');
 
 var app = express();
 
@@ -12,6 +14,30 @@ app.get('/', function(req, res) {
     };
     
     res.sendFile('index.html', options);
+});
+
+app.get('/pdf', function(req, res) {
+    
+     var options = {
+        root: __dirname + '/public/'
+    };
+    
+    res.sendFile('pdf.html', options);
+});
+
+app.get('/pdf2', function(reg, res) {
+    
+    var html = fs.readFileSync('./public/pdf.html', 'utf8');
+    var options = { format: 'A4' };
+    
+    pdf.create(html, options).toFile('./public/pdf.pdf', function(err, res) {
+        
+        if (err) {
+            return console.log(err);
+        }
+        
+        console.log(res);
+    });
 });
 
 app.listen(process.env.PORT || 8080);

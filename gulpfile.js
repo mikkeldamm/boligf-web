@@ -58,7 +58,7 @@ gulp.task('typescript', function () {
 
 gulp.task('copy-index', function() {
   
-    gulp.src(['./src/index.html', './src/robots.txt'])
+    gulp.src(['./src/index.html', './src/pdf.html', './src/robots.txt'])
       .pipe(gulp.dest('./public'));
 });
 
